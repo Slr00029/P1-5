@@ -9,10 +9,10 @@ import org.springframework.jdbc.core.RowMapper;
 	public class UsuarioMapper implements RowMapper <DTOUsuarios>{
 		public DTOUsuarios mapRow(ResultSet rs, int rowNum) throws SQLException{
 		DTOUsuarios usuario = new DTOUsuarios();
-		usuario.setUser(rs.getString("Nombre"));
-		usuario.setPass(rs.getString("Password"));
-		usuario.setEmail(rs.getString("Email"));
-		usuario.setDni(rs.getString("DNI"));
+		usuario.setUser(rs.getString("user"));
+		usuario.setPass(rs.getString("pass"));
+		usuario.setEmail(rs.getString("email"));
+		usuario.setDni(rs.getString("dni"));
 		return usuario;
 		}
 		}

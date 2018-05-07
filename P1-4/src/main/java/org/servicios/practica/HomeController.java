@@ -66,15 +66,16 @@ public class HomeController {
 		String dni = request.getParameter("dni");
 		model.addAttribute("DNI", dni);
 		
-		DTOUsuarios usuarioDTO = new DTOUsuarios(user,pass,email,dni);
+		
 		
 		String url = "";
 		
-		if (DAO.existUser(user, email, dni)){
-			url = "existe";//****
+		if (DAO.existUser(user, email, dni) == true){
+			url = "usuarioYaRegistrado";//****
 		} else{
+			DTOUsuarios usuarioDTO = new DTOUsuarios(user,pass,email,dni);
 			DAO.insertaUsuario(usuarioDTO);
-			url = "registrado";//****
+			url = "usuarioRegistrado";//****
 		}
 		return url;
 	}
