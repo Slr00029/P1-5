@@ -7,6 +7,10 @@ import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.Cookie;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +26,25 @@ public class HomeController {
 	private DAOUsuariosInterfaz DAO;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-		public String home (Model model){
+		public String home (Model model, HttpServletRequest request){
 		
-		return "home";
+		// HttpSession sesion = request.getSession();
+		/*Cookie[] cookies = request.getCookies();
+		String cUser = "user";
+		String Nombre = "";
+		
+		if(cookies == null){*/
+			return "home";
+	/*	}
+		else {
+			 for(Cookie cookie: cookies){
+				 if(cUser.equals(cookie.getName())){
+					 Nombre = cookie.getValue();
+				 }
+			 }
+		}
+		
+		*/
 	}
 	
 	@RequestMapping(value = "/Servlet1", method = {RequestMethod.GET,RequestMethod.POST})
