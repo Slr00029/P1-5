@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Cookie;
@@ -29,41 +30,60 @@ public class HomeController {
 		public String home (Model model, HttpServletRequest request){
 		
 		// HttpSession sesion = request.getSession();
-		/*Cookie[] cookies = request.getCookies();
+		Cookie[] cookies = request.getCookies();
 		String cUser = "user";
 		String Nombre = "";
 		
-		if(cookies == null){*/
+		if(cookies == null){
 			return "home";
-	/*	}
+		}
 		else {
 			 for(Cookie cookie: cookies){
 				 if(cUser.equals(cookie.getName())){
 					 Nombre = cookie.getValue();
 				 }
 			 }
+			 if(Nombre.equals("Admin")){
+				 // Listar usuarios
+				 return "usuario";
+			 }
+			 else {
+				// Como ya se ha registrado, mostramos la vista articulo 
+				 return "articulo"; // Hacer vista articulo *****
+			 }
 		}
 		
-		*/
+		
 	}
 	
 	@RequestMapping(value = "/Servlet1", method = {RequestMethod.GET,RequestMethod.POST})
-		public String servlet1 (HttpServletRequest request, Model model){
+		public String servlet1 (HttpServletRequest request, Model model, HttpServletResponse response){
 		
 		String user = request.getParameter("user");
 		String pass = request.getParameter("pass");
 		String url = "";
 		List<DTOUsuarios> lista = DAO.LeeUsuarios();
 		
+		Cookie CUser = null;
 		
 		if (DAO.buscarAdmin(user, pass) != null){
 			url = "usuario"; //******
+			CUser = new Cookie("user", user);
+			CUser.setPath("/");
+			CUser.setMaxAge(60*60*24*365*2);
+			response.addCookie(CUser);
+			model.addAttribute("lista", lista);
 			} 
 		else if(DAO.buscarUsuario(user, pass)!=null){
+			CUser = new Cookie("user", user);
+			CUser.setPath("/");
+			CUser.setMaxAge(60*60*24*365*2);
+			response.addCookie(CUser);
 			DTOUsuarios dto = new DTOUsuarios();
 			dto = DAO.buscarUsuario(user, pass);
 			model.addAttribute("dto",dto);			
-			url = "usuariodatos"; //****
+			url = "usuariodatos"; //**** lista articulos vista
+			
 		}
 		else {
 			url = "registro";//****		
