@@ -25,20 +25,22 @@ public class HomeController {
 	
 	@Autowired
 	private DAOUsuariosInterfaz DAO;
+	@Autowired
+	private DAOArticulos DAO2;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 		public String home (Model model, HttpServletRequest request){
 		
-		// HttpSession sesion = request.getSession();
+	/*	 HttpSession sesion = request.getSession();
 		Cookie[] cookies = request.getCookies();
 		String cUser = "user";
 		String Nombre = "";
 		
 		if(cookies == null){
-			return "home";
-		}
+			*/return "home";
+	/*	}
 		else {
-			 for(Cookie cookie: cookies){
+			 for(Cookie cookie: cookies){ gvih
 				 if(cUser.equals(cookie.getName())){
 					 Nombre = cookie.getValue();
 				 }
@@ -49,12 +51,13 @@ public class HomeController {
 			 }
 			 else {
 				// Como ya se ha registrado, mostramos la vista articulo 
-				 return "articulo"; // Hacer vista articulo *****
+				 return "articulos"; // Hacer vista articulo *****
 			 }
 		}
 		
-		
+		*/
 	}
+	
 	
 	@RequestMapping(value = "/Servlet1", method = {RequestMethod.GET,RequestMethod.POST})
 		public String servlet1 (HttpServletRequest request, Model model, HttpServletResponse response){
@@ -64,25 +67,29 @@ public class HomeController {
 		String url = "";
 		List<DTOUsuarios> lista = DAO.LeeUsuarios();
 		
-		Cookie CUser = null;
+		
+		// Cookie CUser = null;
 		
 		if (DAO.buscarAdmin(user, pass) != null){
 			url = "usuario"; //******
-			CUser = new Cookie("user", user);
+		/*	CUser = new Cookie("user", user);
 			CUser.setPath("/");
 			CUser.setMaxAge(60*60*24*365*2);
-			response.addCookie(CUser);
+			response.addCookie(CUser);*/
 			model.addAttribute("lista", lista);
 			} 
 		else if(DAO.buscarUsuario(user, pass)!=null){
-			CUser = new Cookie("user", user);
+		/*	CUser = new Cookie("user", user);
 			CUser.setPath("/");
 			CUser.setMaxAge(60*60*24*365*2);
-			response.addCookie(CUser);
+			response.addCookie(CUser); */
 			DTOUsuarios dto = new DTOUsuarios();
 			dto = DAO.buscarUsuario(user, pass);
-			model.addAttribute("dto",dto);			
-			url = "usuariodatos"; //**** lista articulos vista
+			model.addAttribute("dto",dto);	
+			List<DTOArticulos> lista2 = DAO2.LeeArticulos();
+			
+			model.addAttribute("lista2", lista2);
+			url = "articulos"; //**** lista articulos vista
 			
 		}
 		else {
