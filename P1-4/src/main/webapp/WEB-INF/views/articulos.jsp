@@ -21,10 +21,6 @@ pageEncoding="ISO-8859-1"%>
 <th><c:out  value="${list2.nombre}"  /></th>
 </c:forEach>
 </tr>
-
-
-
-
 <tr>
 <th> ID </th>
 <c:forEach items= "${lista2}" var="list2">
