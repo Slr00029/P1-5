@@ -156,6 +156,41 @@ public class HomeController {
 		return url;
 	}
 	
+	@RequestMapping(value = "/modificar", method = {RequestMethod.GET,RequestMethod.POST})
+	public String modificar (HttpServletRequest request, Model model) {
+		String user = request.getParameter("user");
+		model.addAttribute("User", user);
+		
+		String pass = request.getParameter("pass");
+		model.addAttribute("Pass", pass);
+		
+		String email = request.getParameter("email");
+		model.addAttribute("Email", email);	
+		
+		String dni = request.getParameter("dni");
+		model.addAttribute("DNI", dni);
+		
+		
+		
+		String url = "";
+		
+		if (DAO.existUser(user, email, dni) == true){
+			DTOUsuarios usuarioDTO = new DTOUsuarios(user,pass,email,dni);
+			usuarioDTO = DAO.buscarUsuario(dni);
+			DAO.insertaUsuario(usuarioDTO);
+			model.addAttribute("dto",usuarioDTO);	
+
+			
+			url = "home";
+			
+		} else{
+			
+			
+			
+		}
+		return url;
+	}
+	
 	
 }
 	

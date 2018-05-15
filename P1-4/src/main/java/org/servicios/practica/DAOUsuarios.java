@@ -7,7 +7,6 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 @Repository
 public class DAOUsuarios implements DAOUsuariosInterfaz{
@@ -97,6 +96,11 @@ public DTOUsuarios buscarUsuario(String dni) {
 }
 
 
-
+@Override
+public void ModificaUsuarios(DTOUsuarios user, String dni) {			
+	String sql = "update usuarios SET user = ?, pass = ?, email = ?, dni = ? WHERE dni = ?";
+	Object[ ] parametros = {user.getUser(),user.getPass(), user.getEmail(), user.getDni(), dni};
+	this.jdbcTemplate.update(sql,parametros);
+}
 	
 }
