@@ -112,7 +112,7 @@ pageEncoding="ISO-8859-1"%>
 </c:choose>
 </table>
 
-<h1>Si desea modificar los datos de su usuario: <form action="modificar" method=get><input type=submit value=Modificar></form></h1>
+<h1>Si desea modificar los datos de su usuario: <form action="ajustes" method=get><input type=submit value=Modificar></form></h1>
 
 </body>
 </html>

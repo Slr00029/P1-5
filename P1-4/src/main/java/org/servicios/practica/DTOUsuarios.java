@@ -34,7 +34,7 @@ public class DTOUsuarios implements Serializable{
 		this.email = email;
 	}
 	
-	public DTOUsuarios(String user, String pass, String dni, String email) {
+	public DTOUsuarios(String user, String pass, String email, String dni) {
 		super();
 		this.user = user;
 		this.pass = pass;

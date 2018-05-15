@@ -174,24 +174,24 @@ public class HomeController {
 		
 		String url = "";
 		
-		if (DAO.existUser(user, email, dni) == true){
+		if (DAO.buscarUsuario(dni)!=null){
 			DTOUsuarios usuarioDTO = new DTOUsuarios(user,pass,email,dni);
-			usuarioDTO = DAO.buscarUsuario(dni);
-			DAO.insertaUsuario(usuarioDTO);
-			model.addAttribute("dto",usuarioDTO);	
-
+			DAO.ModificaUsuarios(usuarioDTO);
 			
 			url = "home";
 			
 		} else{
 			
-			
+			url="home";
 			
 		}
 		return url;
 	}
 	
-	
+	@RequestMapping(value = "/ajustes", method = {RequestMethod.GET,RequestMethod.POST})
+	public String ajustes (HttpServletRequest request, Model model) {
+		return "modificar";
+	}
 }
 	
 

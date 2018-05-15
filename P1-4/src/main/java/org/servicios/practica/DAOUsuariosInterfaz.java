@@ -17,5 +17,5 @@ public interface DAOUsuariosInterfaz {
 	
 	public DTOUsuarios buscarUsuario(String dni);
 	
-	public void ModificaUsuarios(DTOUsuarios usuario, String dni);
+	public void ModificaUsuarios(DTOUsuarios usuario);
 }

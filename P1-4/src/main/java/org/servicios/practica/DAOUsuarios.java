@@ -97,10 +97,13 @@ public DTOUsuarios buscarUsuario(String dni) {
 
 
 @Override
-public void ModificaUsuarios(DTOUsuarios user, String dni) {			
-	String sql = "update usuarios SET user = ?, pass = ?, email = ?, dni = ? WHERE dni = ?";
-	Object[ ] parametros = {user.getUser(),user.getPass(), user.getEmail(), user.getDni(), dni};
+public void ModificaUsuarios(DTOUsuarios user) {			
+	String sql = "update usuarios SET user = ?, pass = ?, email = ? WHERE dni = ?";
+	
+	Object[ ] parametros = {user.getUser(), user.getPass(), user.getEmail(), user.getDni()};
+System.out.println(user.getDni());	
 	this.jdbcTemplate.update(sql,parametros);
+	
 }
 	
 }
