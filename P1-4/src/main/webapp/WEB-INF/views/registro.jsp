@@ -4,20 +4,21 @@
 <meta charset="ISO-8859-1">
 <title> Registro </title>
 </head>
-<body>
-
-<h2>Registro de nuevos usuarios</h2>
+<body background="http://blogs.ffyh.unc.edu.ar/escueladeletras/wp-content/blogs.dir/110/files/2016/04/fondos-de-pantalla-azul-infinito.jpg">
+<CENTER>
+<br><br><br><br><br><br>
+<h1 style="color:#F8F8FF"> <FONT SIZE=5>Registro de nuevos usuarios</FONT></h1>
 <form action="Servlet2" method=post>
-Nombre: <input type=text name=user>
+<input type="text" name="user" aria-required="true" placeholder="Nombre" required><br>
 <br>
-Password: <input type=password name= pass>
+<input type="text" name="pass" aria-required="true" placeholder="Contraseña" required><br>
 <br>
-Email: <input type=text name= email>
+<input type="text" name="email" aria-required="true" placeholder="Correo Electrónico" required><br>
 <br>
-DNI: <input type=text name= dni maxlength="8">
+<input type="text" name="dni" aria-required="true" placeholder="DNI" required><br>
 <br>
-<input type=submit value=continuar>
+<input type=submit value=Registrarse>
 </form>
-
+</CENTER>
 </body>
 </html>

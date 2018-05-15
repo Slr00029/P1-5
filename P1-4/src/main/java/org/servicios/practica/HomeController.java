@@ -28,16 +28,23 @@ public class HomeController {
 	@Autowired
 	private DAOArticulos DAO2;
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
 		public String home (Model model, HttpServletRequest request){
 		
-	/*	 HttpSession sesion = request.getSession();
-		Cookie[] cookies = request.getCookies();
+
+	 
+	/*	Cookie[] cookies = request.getCookies();
 		String cUser = "user";
 		String Nombre = "";
 		
 		if(cookies == null){
-			*/return "home";
+	*/	
+	/*	HttpSession sesion = request.getSession(true);	
+		DTOUsuarios user = (DTOUsuarios) sesion.getAttribute("user");*/
+		
+		
+		
+			return "home";
 	/*	}
 		else {
 			 for(Cookie cookie: cookies){ gvih
@@ -58,16 +65,31 @@ public class HomeController {
 		*/
 	}
 	
+	@RequestMapping(value = "/registro", method = RequestMethod.GET)
+	public String registro (Model model, HttpServletRequest request){
+	
+		return "registro";
+
+}
+	
 	
 	@RequestMapping(value = "/Servlet1", method = {RequestMethod.GET,RequestMethod.POST})
 		public String servlet1 (HttpServletRequest request, Model model, HttpServletResponse response){
 		
+		HttpSession sesion = request.getSession(true);	
+		
 		String user = request.getParameter("user");
 		String pass = request.getParameter("pass");
+
+		 DTOUsuarios usuario = (DTOUsuarios) new DTOUsuarios();
+		
+		
+		
+		
 		String url = "";
 		List<DTOUsuarios> lista = DAO.LeeUsuarios();
-		
-		
+		sesion.setAttribute("user", user);
+		sesion.setAttribute("pass", pass);
 		// Cookie CUser = null;
 		
 		if (DAO.buscarAdmin(user, pass) != null){
@@ -95,6 +117,8 @@ public class HomeController {
 		else {
 			url = "registro";//****		
 		}
+	/*	HttpSession sesion = request.getSession();
+		sesion.setAttribute("usuario", usuario); */
 		model.addAttribute("lista",lista);
 		return url;
 	}
@@ -118,11 +142,16 @@ public class HomeController {
 		String url = "";
 		
 		if (DAO.existUser(user, email, dni) == true){
-			url = "usuarioYaRegistrado";//****
+			url = "usuarioYaRegistrado";
+			
 		} else{
 			DTOUsuarios usuarioDTO = new DTOUsuarios(user,pass,email,dni);
 			DAO.insertaUsuario(usuarioDTO);
-			url = "usuarioRegistrado";//****
+			
+
+			List<DTOArticulos> lista2 = DAO2.LeeArticulos();
+			model.addAttribute("lista2", lista2);
+			url = "articulos";
 		}
 		return url;
 	}

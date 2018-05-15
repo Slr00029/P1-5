@@ -6,7 +6,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Ya registrado</title>
 </head>
-<body>
-<h1>El usuario que se ha introducido ya se encuentra registrado</h1>
+<body background="http://blogs.ffyh.unc.edu.ar/escueladeletras/wp-content/blogs.dir/110/files/2016/04/fondos-de-pantalla-azul-infinito.jpg">
+<CENTER>
+<h1 style="color:#F8F8FF"> <FONT SIZE=5>El usuario que se ha introducido ya se encuentra registrado</FONT></h1><br><br>
+<form action="home" method=get><input type=submit value=Inicio></form>
+</CENTER>
 </body>		
 </html>
