@@ -11,8 +11,16 @@ pageEncoding="ISO-8859-1"%>
 </head>
 <body>
 
-
-<table border="2">
+<CENTER>
+<table>
+<tr>
+<th></th>
+<th><img src="https://euxshop.com/1654-large_default/womens-balenciaga-speed-mid-sneaker-white.jpg" heigh="75" width="100"></th>
+<th><img src="https://www.decathlon.es/media/835/8350877/big_89d304900f4d48f48a2bf431ebb003cd.jpg" heigh="75" width="100"></th>
+<th><img src="http://www.castrilruralromero.es/images/category_6/El%20%C3%BAltimo%20dise%C3%B1o%20de%20diversificaci%C3%B3n%20Verde%20Nike%20Zapatilla%20F%C3%BAtbol%20Sala%20Hipervenon%20Verde%20Deportivas%206250938%20Mujer%20Zapatos.jpg" heigh="75" width="100"></th>
+<th><img src="https://d243u7pon29hni.cloudfront.net/imagesOnDemand/get?imagePath=/images/products/portatil-hp-255g6-amd-e2-9000e-4-gb-ram-137677401_l.png&width=480&height=480&quality=65&imgType=product" heigh="75" width="100"></th>
+<th><img src="https://www.tpvmax.es/395-thickbox_default/ordenador-sobremesa-monitor-19.jpg" heigh="75" width="100"></th>
+</tr>
 <c:choose>
 <c:when test="${ not empty lista2}">
 <tr>
@@ -72,7 +80,7 @@ pageEncoding="ISO-8859-1"%>
 </th>
 </tr>
 <tr>
-<th style="color:#0000ff" bgcolor= "#000000"> Añadir al carro </th>
+<th></th>
 <th><form target="paypal" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="hosted_button_id" value="DM9BTCAJEXAGG">
@@ -111,8 +119,10 @@ pageEncoding="ISO-8859-1"%>
 </c:when>
 </c:choose>
 </table>
-
 <h1>Si desea modificar los datos de su usuario: <form action="ajustes" method=get><input type=submit value=Modificar></form></h1>
 
+<br><br><br>
+<p><form action="home" method=get><input type=submit value=Inicio></form></p>
+</CENTER>
 </body>
 </html>
